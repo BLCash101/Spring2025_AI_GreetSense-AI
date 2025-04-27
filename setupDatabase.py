@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS students (
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS logs (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    student_name TEXT,
+    student_id TEXT,
     timestamp TEXT,
     event_type TEXT  -- 'entry' or 'exit'
 )
