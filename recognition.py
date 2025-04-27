@@ -11,7 +11,7 @@ cam=cv2.VideoCapture(0)
 
 #deals with updating the dataset
 def insertOrUpdate(Id,Name):
-    conn=sqlite3.connect("faceDatabase.db")
+    conn=sqlite3.connect("database.db")
     cmd="SELECT * FROM Peoples WHERE ID="+str(Id)
     cursor=conn.execute(cmd)
     isRecordExist=0
