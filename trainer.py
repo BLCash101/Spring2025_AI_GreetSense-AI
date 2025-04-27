@@ -20,7 +20,8 @@ def get_images_with_ids(path):
         cv2.imshow("training", faceNp)
         cv2.waitKey(10)
 
-    return np.array(id)
+    return np.array(ids), faces
 
 ids,faces=get_images_with_ids(path)
-recognizer.train(faces,id)
+recognizer.train(faces,ids)
+recognizer.save('trainer.yml')
