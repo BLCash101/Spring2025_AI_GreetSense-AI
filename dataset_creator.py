@@ -7,11 +7,11 @@ cam=cv2.VideoCapture(0);  #0 is for camera
 
 def insertorupdate(Id,Name,age): #sqlite
     conn=sqlite3.connect("database")
-    cmd="SELECT * FROM STUDENTS WHERE ID=" + str(Id);
-    cursor=conn.execute(cmd);
-    isRecordExist=0;
+    cmd="SELECT * FROM STUDENTS WHERE ID=" + str(Id)
+    cursor=conn.execute(cmd)
+    isRecordExist=0
     for row in cursor:
-        isRecordExist=1;
+        isRecordExist=1
     if(isRecordExist==1):
         conn.execute("UPDATE STUDENTS SET Name=? WHERE Id=?", (Name, Id,))
         conn.execute("UPDATE STUDENTS SET age=? WHERE Id=?", (age, Id,))
