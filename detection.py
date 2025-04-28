@@ -39,9 +39,10 @@ while(True):
         print(profile)
         if(profile != None):
             cv2.putText(img, "Name:" + str(profile[1]), (x,y+h+20), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,127), 2)
-            engine.say(f"Hello {profile[1]}")
-            engine.runAndWait()
-            last_spoken_time = time.time()
+            if time.time() -last_spoken_time > 5:
+                engine.say(f"Hello {profile[1]}")
+                engine.runAndWait()
+                last_spoken_time = time.time()
 
     cv2.imshow("FACE", img)
     if(cv2.waitKey(1)==ord('q')):
