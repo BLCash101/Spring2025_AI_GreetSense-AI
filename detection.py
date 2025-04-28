@@ -9,17 +9,17 @@ last_spoken_time = 0
 engine = pyttsx3.init()
 
 
-facedetect = cv2.CascadeClassifier("haarcascade_frontalface)default.xml")
+facedetect = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 camera = cv2.VideoCapture(0)
 engine.say("Hello, starting face recognition")
 engine.runAndWait()
 
 
 recognizer = cv2.face.LBPHFaceRecognizer()
-recognizer.read("recognizer/trainingdata.yml")
+# recognizer.read("recognizer/trainingdata.yml")
 
 def getProfile(id):
-    conn = sqlite3.connect("sqlite.db")
+    conn = sqlite3.connect("database.db")
     cursor = conn.execute("SELECT * FROM STUDENTS WHERE id=?", (id,))
     profile = None
     for row in cursor:
@@ -29,7 +29,7 @@ def getProfile(id):
 
 while(True):
     ret,img = camera.read()
-    gray = cv2.cvtColor(img, cv2.COLOR_BayerRG2GRAY)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
     faces = facedetect.detectMultiScale(gray, 1.3,5)
     for(x,y,w,h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
