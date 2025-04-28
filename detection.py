@@ -38,7 +38,7 @@ while(True):
         profile=getProfile(id)
         print(profile)
         if(profile != None):
-            cv2.putText(img, "Name:" + str(profile[1]), (x,y+h,+20), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,127), 2)
+            cv2.putText(img, "Name:" + str(profile[1]), (x,y+h+20), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,127), 2)
             engine.say(f"Hello {profile[1]}")
             engine.runAndWait()
             last_spoken_time = time.time()
