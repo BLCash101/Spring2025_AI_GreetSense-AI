@@ -2,10 +2,17 @@ import cv2
 import numpy as np
 import os
 import sqlite3
+import pyttsx3
+import time
+
+last_spoken_time = 0
+engine = pyttsx3.init()
 
 
 facedetect = cv2.CascadeClassifier("haarcascade_frontalface)default.xml")
 camera = cv2.VideoCapture(0)
+engine.say("Hello, starting face recognition")
+engine.runAndWait()
 
 
 recognizer = cv2.face.LBPHFaceRecognizer()
@@ -31,10 +38,15 @@ while(True):
         print(profile)
         if(profile != None):
             cv2.putText(img, "Name:" + str(profile[1]), (x,y+h,+20), cv2.FONT_HERSHEY_COMPLEX, 1, (0,255,127), 2)
+            engine.say(f"Hello {profile[1]}")
+            engine.runAndWait()
+            last_spoken_time = time.time()
 
     cv2.imshow("FACE", img)
     if(cv2.waitKey(1)==ord('q')):
         break
 
+engine.say("Goodbye, closing the program")
+engine.runAndWait()
 camera.release()
 cv2.destroyAllWindows()
