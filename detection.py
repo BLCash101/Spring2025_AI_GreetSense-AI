@@ -16,7 +16,7 @@ engine.runAndWait()
 
 
 recognizer = cv2.face.LBPHFaceRecognizer()
-recognizer.read("trainingdata.yml")
+recognizer.read("trainer.yml")
 
 def getProfile(id):
     conn = sqlite3.connect("database.db")
